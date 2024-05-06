@@ -29,7 +29,7 @@ x_sync = randn(Fs/4,1);
 x_sync = x_sync/max(abs(x_sync))*0.5;
 % stick it at the beginning of the transmission
 x_tx = [x_sync;x_tx];
-save sync_noise.mat x_sync Fs msg_length
+save sync_noise.mat x_sync Fs msg_length SymbolPeriod f_c
 % write the data to a file
 audiowrite('message.wav', x_tx, Fs);
 

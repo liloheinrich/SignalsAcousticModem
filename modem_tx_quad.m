@@ -45,26 +45,19 @@ x_sync = randn(Fs/4,1);
 x_sync = x_sync/max(abs(x_sync))*0.5;
 
 % stick it at the beginning of the transmission
-x_tx = x_c_tx/2 + x_s_tx/2;
+x_tx = x_c_tx*0.7 + x_s_tx*0.7;
 
 % figure
-% hold on
-% plot(x_c_tx, 'b')
-% plot(x_s_tx, 'r')
-% plot(x_tx, 'g')
-% xlim([10000, 10500])
-
-figure
-plot_ft_rad(x_c_tx, Fs)
-figure
-plot_ft_rad(x_s_tx, Fs)
-figure
-plot_ft_rad(x_tx, Fs)
+% plot_ft_rad(x_c_tx, Fs)
+% figure
+% plot_ft_rad(x_s_tx, Fs)
+% figure
+% plot_ft_rad(x_tx, Fs)
 
 x_tx = [x_sync;x_tx];
-save sync_noise.mat x_sync Fs msg_length
+save sync_noise.mat x_sync Fs msg_length SymbolPeriod f_c
 % write the data to a file
 % audiowrite('quad_message.wav', x_c_tx, Fs);
-audiowrite('quad_message.wav', x_tx, Fs);
+audiowrite('message_quad.wav', x_tx, Fs);
 
 
